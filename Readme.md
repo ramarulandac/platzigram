@@ -21,11 +21,11 @@ functionalities:
 7. Biligual site
 8. Full Responsive
 
-##Credits
+## Credits
 
 - [René Marulanda](https://twitter.com/MaruloRenacuajo)
 
-##License
+## License
 
 [MIT](https://opensource.org/licenses/MIT)
 
