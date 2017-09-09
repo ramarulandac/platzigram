@@ -22,49 +22,49 @@ require('intl-relativeformat/dist/locale-data/es.js');
 var rf = new IntlRelativeFormat('en-US');
 
 module.exports = function pictureCard(pic) {
-     
+
 
   var el;
    function render(picture){
 
     return yo`<div class="card ${picture.liked ?'liked':''}">
       <div class="card-image">
-        <img class="activator" src="${pic.url}" ondblclick=${like.bind(null, null, true)} />
+        <img class="activator" src="${pic.src}" ondblclick=${like.bind(null, null, true)} />
         <i class="fa fa-heart like-heart ${picture.likeheart?'liked':''}"></i>
       </div>
       <div class="card-content">
         <a href="/${pic.user.username}" class="card-title">
           <img src="${pic.user.avatar}" class="avatar"  />
-          <span class="username">${pic.user.username}</span>
+          <span class="username">${pic.user.name}</span>
         </a>
-        <small class="right time">${translate.date.format(picture.createdAt)}</small>
-        <p> 
+        <small class="right time">${translate.date.format(new Date(picture.createdAt).getTime())}</small>
+        <p>
           <a class="left" href="#" onclick=${like.bind(null, true, false)}><i class="fa fa-heart-o heart-o" aria-hidden="true"></i></a>
           <a class="left" href="#" onclick=${like.bind(null, false, false )}><i class="fa fa-heart heart" aria-hidden="true"></i></a>
-          <span class="left likes">${translate.message('likes',{ likes: picture.likes })}</span>
+          <span class="left likes">${translate.message('likes',{ likes: picture.likes || 0 })}</span>
         </p>
       </div>
-    </div>`;  
+    </div>`;
   }
 
-    function like(liked, dblclick){  
-      
+    function like(liked, dblclick){
+
       if(dblclick){
-         pic.likeheart = pic.liked =  !pic.liked;  
+         pic.likeheart = pic.liked =  !pic.liked;
          liked = pic.liked;
       } else {
          pic.liked = liked;
       }
-      
+
       pic.likes+=liked ? 1: -1;
 
       function doRender(){
         var newEl = render(pic);
         yo.update(el,newEl);
       }
-      
+
       doRender();
-      
+
       setTimeout(function(){
         pic.likeheart=false;
         doRender();
@@ -72,14 +72,11 @@ module.exports = function pictureCard(pic) {
 
       return false;
     }
-                  
-             
+
+
     el = render(pic);
     return el;
-      
 
-         
+
+
  }
-
-           
-      

@@ -1,7 +1,7 @@
 var yo      = require('yo-yo');
 var layout  = require('../layout');
 var picture = require('../picture-card');
-var translate = require('../translate').message; 
+var translate = require('../translate').message;
 var request   = require('superagent');
 
 // usamos clases y elementos que nos da materialize para hacer una interfaz guay
@@ -19,10 +19,10 @@ var el = yo`<div class="container timeline">
              <button id="btnCancel" type="button" class="btn btn-flat red hide" onclick=${cancel}> <i class="fa fa-trash" aria-hidden="true"></i></button>
           </form>
         </div>
-      </div>  
+      </div>
       <div class="row">
-              <div class="col s12 m10 offset-m1 l6 offset-l3">
-               ${pictures.map(function(pic) { 
+              <div id="pictures-container" class="col s12 m10 offset-m1 l6 offset-l3">
+               ${pictures.map(function(pic) {
                  return picture(pic);
                })}
               </div>
@@ -34,7 +34,7 @@ function toggleButtons(){
   document.getElementById('btnUpload').classList.toggle('hide');
   document.getElementById('btnCancel').classList.toggle('hide');
   }
-    
+
 function cancel(){
   toggleButtons();
   document.getElementById('formUpload').reset();
@@ -43,7 +43,7 @@ function cancel(){
 
 function onchange(){
   toggleButtons();
-  
+
 }
 
 function onsubmit(ev){
@@ -58,10 +58,6 @@ function onsubmit(ev){
 
 }
 
-    return layout(el);           
+    return layout(el);
 
 }
-
-
-
-         
