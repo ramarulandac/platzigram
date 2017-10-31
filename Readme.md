@@ -1,7 +1,6 @@
 # Platzigram
 
-An Instagram clon: SPA final project of Javascript the definitive course at [Platzi](https://platzi.com) 
-
+An Instagram clon: SPA 
 
 ## Description
 
@@ -23,7 +22,7 @@ functionalities:
 
 ## Credits
 
-- [René Marulanda](https://twitter.com/MaruloRenacuajo)
+- [René Marulanda](https://twitter.com/MaruloRene)
 
 ## License
 
